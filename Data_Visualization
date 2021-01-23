@@ -1,0 +1,18 @@
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import csv
+
+
+op = pd.read_csv("dam_occupancy.csv")
+type(op)
+
+pd.set_option("display.max.columns", None)
+op.head()
+
+#When I wrote "occupancy" and "reserved_water" the error occured.
+#It should be the same as the name in the excel file.
+op.plot(x="DATE", y=["GENERAL_DAM_OCCUPANCY_RATE", "GENERAL_DAM_RESERVED_WATER"])
+
+#To retrieve plot
+plt.show()
