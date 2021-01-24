@@ -2,19 +2,23 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import csv
-import seaborn as sns
 
-op = pd.read_csv("C:\\Users....\\dam_occupancy.csv")
+op = pd.read_csv("C:\\Users\\ASUS\\PycharmProjects\\IBB\\dam_occupancy.csv")
 type(op)
 
-pd.set_option("display.max.columns", None)
-op.head()
+#Optional
+#pd.set_option("display.max.columns", None)
+#op.head()
 
 op["DATE"] = pd.to_datetime(op["DATE"])
 
 #When I wrote "occupancy" and "reserved_water" the error occured.
 #It should be the same as the name in the excel file.
-op.plot(x="DATE", y=["GENERAL_DAM_OCCUPANCY_RATE", "GENERAL_DAM_RESERVED_WATER"])
+
+plt.figure(figsize=(10,5))
+plt.plot(op.DATE, op.GENERAL_DAM_OCCUPANCY_RATE)
+plt.plot(op.DATE, op.GENERAL_DAM_RESERVED_WATER)
+plt.legend(["Dam Rate","Reserved Water"],loc="upper right")
 
 #To retrieve plot
 plt.show()
